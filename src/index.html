@@ -14,22 +14,13 @@
 
 <body>
   <section class="section">
-    <div class="search">
-      <input type="text" name="name" placeholder="Search images...">
+    <form class="form">
+      <input type="text" name="search" placeholder="Search images...">
       <button class="button">Search</button>
-    </div>
-
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-
+    </form>
+    <span class="loader hidden"></span>
+    <ul class="gallery"></ul>
   </section>
-
   <script type="module" src="./main.js"></script>
 </body>
 
