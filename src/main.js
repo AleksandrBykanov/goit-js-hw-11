@@ -11,16 +11,13 @@ export const refs = {
 
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
-  const value = e.target.elements.search.value;
+  const value = e.target.elements.search.value.trim();
   if (value === '') {
-    refs.gallery.innerHTML = ' ';
-    iziToast.warning({
+    return iziToast.warning({
       title: 'warning',
-      message: ' Enter a word for the query, please.',
+      message: 'Enter a word for the query, please.',
       position: 'center',
       displayMode: 'once',
-      maxWidth: 500,
-      imageWidth: 600,
     });
   }
 
@@ -35,8 +32,6 @@ refs.form.addEventListener('submit', e => {
         'Sorry, there are no images matching your search query. Please try again!',
       position: 'topRight',
       displayMode: 'once',
-      maxWidth: 500,
-      imageWidth: 600,
     });
   });
   arr.finally(() => {

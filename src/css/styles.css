@@ -101,12 +101,6 @@ input {
   background: #fff;
 }
 
-p {
-  width: 34px;
-  height: 40px;
-  font-weight: 600;
-}
-
 .gallery-item {
   list-style-type: none;
 }
