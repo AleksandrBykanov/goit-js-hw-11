@@ -16,24 +16,26 @@ refs.form.addEventListener('submit', e => {
     return iziToast.warning({
       title: 'warning',
       message: 'Enter a word for the query, please.',
-      position: 'center',
+      position: 'topRight',
       displayMode: 'once',
     });
   }
 
   showLoader();
   const arr = getImage(value);
-  if (arr.length !== 0) {
-    arr.then(data => marcup(data.hits));
-  }
-  arr.catch(err => {
-    iziToast.show({
+  arr.then(data => {
+    if(data.hits.length === 0) {
+      iziToast.show({
       message:
         'Sorry, there are no images matching your search query. Please try again!',
       position: 'topRight',
       displayMode: 'once',
     });
+    }
+    marcup(data.hits)
   });
+
+  arr.catch(err => {});
   arr.finally(() => {
     hideLoader();
     refs.form.reset();
