@@ -9,6 +9,7 @@ export const refs = {
   loader: document.querySelector('.loader'),
 };
 
+
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
   const value = e.target.elements.search.value.trim();
@@ -32,7 +33,7 @@ refs.form.addEventListener('submit', e => {
       displayMode: 'once',
     });
     }
-    marcup(data.hits)
+    marcup(data.hits);
   });
 
   arr.catch(err => {});

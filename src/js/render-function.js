@@ -2,13 +2,11 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { refs } from '../main';
 
-
-
 export function marcup(images) {
-  const gallery = refs.gallery;
   const marcup = images
     .map(image => {
-      return `<a class="gallery-item" href="${image.largeImageURL}">
+      return `<li class="gallery-item"
+      <a class="gallery-link" href="${image.largeImageURL}">
     <img
       width=360;
       height=200;
@@ -16,20 +14,25 @@ export function marcup(images) {
       src="${image.webformatURL}"
       alt="${image.tags} " />
           <div class="image-info">
-              <p>LIKES: ${image.likes}</p>
-              <p>VIEWS: ${image.views}</p>
-              <p>COMMENTS: ${image.comments}</p>
-              <p>DOWNLOADS: ${image.downloads}</p>
-          </div>
-    </a>`;
+               <p>LIKES: ${image.likes}</p>
+                    <p>VIEWS: ${image.views}</p>
+                    <p>COMMENTS: ${image.comments}</p>
+                    <p>DOWNLOADS: ${image.downloads}</p>
+                </div>
+            </a>
+            </li>
+        `;
     })
     .join('');
-  gallery.innerHTML = marcup;
-  lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  }).refresh();
+  refs.gallery.innerHTML = marcup;
+  lightbox.refresh();
 }
+
+const lightbox = new SimpleLightbox('.gallery li', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 export function showLoader() {
   refs.loader.classList.remove('hidden');
 }
